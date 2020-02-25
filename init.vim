@@ -20,10 +20,12 @@ colorscheme codedark
 
 " editor congig "
 set number
+set relativenumber
 set tabstop     =4
 set softtabstop =4
 set shiftwidth  =4
 set expandtab
+set hlsearch
 
 " mapping "
 let mapleader = ","
@@ -33,6 +35,19 @@ map <C-t> :tabnew<CR>
 map <C-S-i> :Autoformat<CR>
 
 tnoremap <Esc> <C-\><C-n>
+
+" Switch between tabs
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>5 5gt
+nnoremap <Leader>6 6gt
+nnoremap <Leader>7 7gt
+nnoremap <Leader>8 8gt
+nnoremap <Leader>9 9gt
+
+
 " map nerdtree to the ctrl+n
 function MyNerdToggle()
     if &filetype == 'nerdtree' || exists("g:NERDTree") && g:NERDTree.IsOpen()
