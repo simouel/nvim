@@ -13,21 +13,26 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-system-copy'
 Plug 'tomasiser/vim-code-dark'
+Plug 'gregsexton/MatchTag'
 call plug#end()
 
-" THeme
-colorscheme codedark
-
+filetype plugin indent on
+" theme
+colorscheme codedark 
+" clipboard
+set clipboard+=unnamedplus
 " editor congig "
 set number
 set tabstop     =4
 set softtabstop =4
 set shiftwidth  =4
 set expandtab
+set number relativenumber
+set nu rnu
 
 " mapping "
 let mapleader = ","
-map <C-p> :Files<CR>
+noremap <C-p> :Files<CR>
 map <C-n> :tabnew<CR>
 map <C-t> :tabnew<CR>
 map <C-S-i> :Autoformat<CR>
