@@ -14,6 +14,7 @@ Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-system-copy'
 Plug 'tomasiser/vim-code-dark'
 Plug 'gregsexton/MatchTag'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 filetype plugin indent on
