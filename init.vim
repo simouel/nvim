@@ -13,29 +13,40 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-system-copy'
 Plug 'tomasiser/vim-code-dark'
+Plug 'gregsexton/MatchTag'
+Plug 'mattn/emmet-vim'
+Plug 'dense-analysis/ale'
 call plug#end()
-
-" THeme
-colorscheme codedark
-
+" ident and format
+filetype plugin on
+filetype plugin indent on
+let g:python3_host_prog='/usr/bin/python3'
+" theme
+colorscheme codedark 
+" clipboard
+set clipboard+=unnamedplus
 " editor congig "
 set number
-set relativenumber
 set tabstop     =4
 set softtabstop =4
 set shiftwidth  =4
 set expandtab
-set hlsearch
+let g:formatdef_html = '"html-beautify -p -f - --indent-inner-html
+  \ --unformatted= --indent-size=".&shiftwidth'
+
+"set number relativenumber
+"set nu rnu
 
 " mapping "
 let mapleader = ","
-map <C-p> :Files<CR>
+noremap <C-p> :Files<CR>
 map <C-n> :tabnew<CR>
 map <C-t> :tabnew<CR>
 map <C-S-i> :Autoformat<CR>
+nmap <F12> :set invnumber<CR>
 
 tnoremap <Esc> <C-\><C-n>
-
+"tab selection
 " Switch between tabs
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 2gt
