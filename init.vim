@@ -16,6 +16,7 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'gregsexton/MatchTag'
 Plug 'mattn/emmet-vim'
 Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 " ident and format
 filetype plugin on
@@ -152,3 +153,11 @@ endfunction
 
 " With this maps you can now toggle the terminal
 nnoremap <Leader>t :call MonkeyTerminalToggle()<cr>
+
+
+" coc
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
