@@ -63,6 +63,8 @@ nnoremap <Leader>8 8gt
 nnoremap <Leader>9 9gt
 
 
+let NERDTreeQuitOnOpen=1
+let g:NERDTreeWinSize=60
 " map nerdtree to the ctrl+n
 function MyNerdToggle()
     if &filetype == 'nerdtree' || exists("g:NERDTree") && g:NERDTree.IsOpen()
