@@ -1,8 +1,6 @@
 call plug#begin('~/.vim/plugged')
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'scrooloose/nerdtree'
-
 Plug 'elmar-hinz/vim.typoscript'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Ctrl p open file "
@@ -16,17 +14,20 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-system-copy'
 Plug 'tomasiser/vim-code-dark'
+Plug 'morhetz/gruvbox'
 Plug 'gregsexton/MatchTag'
 Plug 'mattn/emmet-vim'
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-vdebug/vdebug'
 call plug#end()
 " ident and format
 filetype plugin on
 filetype plugin indent on
 let g:python3_host_prog='/usr/bin/python3'
 " theme
-colorscheme codedark 
+" colorscheme codedark
+autocmd vimenter * colorscheme gruvbox
 " clipboard
 set clipboard+=unnamedplus
 " editor congig "
@@ -36,7 +37,7 @@ set softtabstop =4
 set shiftwidth  =4
 set expandtab
 let g:formatdef_html = '"html-beautify -p -f - --indent-inner-html
-  \ --unformatted= --indent-size=".&shiftwidth'
+            \ --unformatted= --indent-size=".&shiftwidth'
 
 "set number relativenumber
 "set nu rnu
@@ -103,7 +104,7 @@ function! MonkeyTerminalOpen()
         " Creates a window call monkey_terminal
         new monkey_terminal
         " Moves to the window the right the current one
-        wincmd J 
+        wincmd J
         let s:monkey_terminal_job_id = termopen($SHELL, { 'detach': 1 })
 
         " Change the name of the buffer to "Terminal 1"
@@ -165,22 +166,22 @@ nnoremap <Leader>t :call MonkeyTerminalToggle()<cr>
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+    inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
 
@@ -188,9 +189,9 @@ endif
 " position. Coc only does snippet and additional edit on confirm.
 " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
 if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 " GoTo code navigation.
@@ -203,9 +204,31 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
+
+
+" Allows Vdebug to bind to all interfaces.
+let g:vdebug_options = {}
+
+" Stops execution at the first line.
+let g:vdebug_options['break_on_open'] = 1
+let g:vdebug_options['max_children'] = 128
+
+" Use the compact window layout.
+let g:vdebug_options['watch_window_style'] = 'compact'
+
+" Because it's the company default.
+let g:vdebug_options['ide_key'] = 'PHPSTORM'
+
+
+" Need to set as empty for this to work with Vagrant boxes.
+let g:vdebug_options['server'] = ""
+let g:vdebug_options['path_maps'] = {
+      \  '/var/www/' : '/home/souellet/www/cisssmc/',
+      \  '/var/www/public' : '/home/souellet/www/cisssmc/public',
+      \}
