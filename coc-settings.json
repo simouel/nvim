@@ -1,4 +1,5 @@
 {
     "suggest.timeout": 5000,
-    "python.pythonPath": "python3"
+    "python.pythonPath": "python3",
+    "python.linting.pep8Enabled": true
 }

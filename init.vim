@@ -1,6 +1,8 @@
 call plug#begin('~/.vim/plugged')
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'scrooloose/nerdtree'
+
+
 Plug 'elmar-hinz/vim.typoscript'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Ctrl p open file "
@@ -13,13 +15,16 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-system-copy'
-Plug 'tomasiser/vim-code-dark'
+"Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
+"Plug 'tomasr/molokai'
+"Plug 'sonph/onehalf'
 Plug 'gregsexton/MatchTag'
 Plug 'mattn/emmet-vim'
 " Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-vdebug/vdebug'
+Plug 'honza/vim-snippets'
 call plug#end()
 " ident and format
 filetype plugin on
@@ -27,9 +32,10 @@ filetype plugin indent on
 let g:python3_host_prog='/usr/bin/python3'
 " theme
 " colorscheme codedark
-autocmd vimenter * colorscheme gruvbox
-" clipboard
-set clipboard+=unnamedplus
+"colorscheme molokai
+ autocmd vimenter * colorscheme gruvbox
+" clipboard needs wl-clipboard
+"set clipboard+=unnamedplus
 " editor congig "
 set number
 set tabstop     =4
@@ -39,7 +45,7 @@ set expandtab
 let g:formatdef_html = '"html-beautify -p -f - --indent-inner-html
             \ --unformatted= --indent-size=".&shiftwidth'
 
-"set number relativenumber
+set number relativenumber
 "set nu rnu
 
 " mapping "
@@ -76,6 +82,7 @@ function MyNerdToggle()
 endfunction
 
 nnoremap <Leader>q :call MyNerdToggle()<CR>
+nnoremap <Leader>g :vertical Git<CR>
 " nnoremap <leader>f :NERDTreeFind<CR>
 
 
@@ -90,6 +97,7 @@ let g:lightline = {
             \   'gitbranch': 'FugitiveHead'
             \ },
             \ }
+
 
 " With this function you can reuse the same terminal in neovim.
 " You can toggle the terminal and also send a command to the same terminal.
@@ -162,6 +170,7 @@ nnoremap <Leader>t :call MonkeyTerminalToggle()<cr>
 
 
 " coc
+let g:coc_global_extensions = ['coc-phpls', 'coc-python', 'coc-snippets']
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -211,6 +220,7 @@ function! s:show_documentation()
     endif
 endfunction
 
+nnoremap <silent> <Leader>? :call fzf#run({ 'source': 'cat ~/.config/nvim/cheatsheet.txt', 'sink': 'e', 'options': '-m', 'down': '50%'})<CR>
 
 " Allows Vdebug to bind to all interfaces.
 let g:vdebug_options = {}
@@ -229,6 +239,10 @@ let g:vdebug_options['ide_key'] = 'PHPSTORM'
 " Need to set as empty for this to work with Vagrant boxes.
 let g:vdebug_options['server'] = ""
 let g:vdebug_options['path_maps'] = {
-      \  '/var/www/' : '/home/souellet/www/cisssmc/',
-      \  '/var/www/public' : '/home/souellet/www/cisssmc/public',
+      \  '/var/www/' : '/home/souellet/www/oqlf-vitrine-linguistique/',
+      \  '/var/www/public' : '/home/souellet/www/oqlf-vitrine-linguistique/public',
+      \  '/var/www/public/typo3conf/ext/tm_gdt' : '/home/souellet/www/oqlf-vitrine-linguistique/packages/tm_gdt',
       \}
+
+set diffopt+=vertical
+
