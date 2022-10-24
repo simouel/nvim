@@ -74,6 +74,12 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    config = { 'require("config/luasnip")' },
+    loaded = true,
+    path = "/home/souellet/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/souellet/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -99,10 +105,10 @@ _G.packer_plugins = {
     path = "/home/souellet/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  ["cmp-vsnip"] = {
+  cmp_luasnip = {
     loaded = true,
-    path = "/home/souellet/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
-    url = "https://github.com/hrsh7th/cmp-vsnip"
+    path = "/home/souellet/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["formatter.nvim"] = {
     config = { 'require("config/formatter")' },
@@ -194,6 +200,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-ts-autotag"] = {
+    config = { 'require("config/ts-autotag")' },
     loaded = true,
     path = "/home/souellet/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
@@ -233,39 +240,38 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/souellet/.local/share/nvim/site/pack/packer/start/vim-graphql",
     url = "https://github.com/jparise/vim-graphql"
-  },
-  ["vim-vsnip"] = {
-    loaded = true,
-    path = "/home/souellet/.local/share/nvim/site/pack/packer/start/vim-vsnip",
-    url = "https://github.com/hrsh7th/vim-vsnip"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-dap-ui
-time([[Config for nvim-dap-ui]], true)
-require("config/dap-ui")
-time([[Config for nvim-dap-ui]], false)
--- Config for: formatter.nvim
-time([[Config for formatter.nvim]], true)
-require("config/formatter")
-time([[Config for formatter.nvim]], false)
+-- Config for: LuaSnip
+time([[Config for LuaSnip]], true)
+require("config/luasnip")
+time([[Config for LuaSnip]], false)
+-- Config for: nvim-ts-autotag
+time([[Config for nvim-ts-autotag]], true)
+require("config/ts-autotag")
+time([[Config for nvim-ts-autotag]], false)
 -- Config for: nvim-dap-virtual-text
 time([[Config for nvim-dap-virtual-text]], true)
 require("config/nvim-dap-text")
 time([[Config for nvim-dap-virtual-text]], false)
--- Config for: mason.nvim
-time([[Config for mason.nvim]], true)
-require("config/mason")
-time([[Config for mason.nvim]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require("config/completion")
-time([[Config for nvim-cmp]], false)
 -- Config for: git-conflict.nvim
 time([[Config for git-conflict.nvim]], true)
 require("config/git-conflict")
 time([[Config for git-conflict.nvim]], false)
+-- Config for: mason.nvim
+time([[Config for mason.nvim]], true)
+require("config/mason")
+time([[Config for mason.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require("config/completion")
+time([[Config for nvim-cmp]], false)
 -- Config for: onedarkpro.nvim
 time([[Config for onedarkpro.nvim]], true)
 require("config/onedark")
@@ -274,14 +280,18 @@ time([[Config for onedarkpro.nvim]], false)
 time([[Config for nvim-dap]], true)
 require("config/dap")
 time([[Config for nvim-dap]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
+-- Config for: nvim-dap-ui
+time([[Config for nvim-dap-ui]], true)
+require("config/dap-ui")
+time([[Config for nvim-dap-ui]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 require("config/nvim-tree")
 time([[Config for nvim-tree.lua]], false)
+-- Config for: formatter.nvim
+time([[Config for formatter.nvim]], true)
+require("config/formatter")
+time([[Config for formatter.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
