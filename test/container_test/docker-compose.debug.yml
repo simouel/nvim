@@ -1,0 +1,25 @@
+version: "3.3"
+
+services:
+  api:
+    build: .
+    env_file: .env
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    command:
+      [
+        "sh",
+        "-c",
+        #"pip install debugpy && python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+        "pip install debugpy && python -m debugpy --wait-for-client --listen 0.0.0.0:5678  -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    ]
+
+    volumes:
+     - ".:/code/"
+    ports:
+      - "8000:8000"
+      - "5678:5678"
+  
