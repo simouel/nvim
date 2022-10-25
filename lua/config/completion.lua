@@ -31,10 +31,14 @@ cmp.setup({
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
 
         ['<Tab>'] = next,
-        ['<C-n>'] = next,
+        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<CR>'] = cmp.mapping.confirm ({
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true
+        }),
 
         ["<S-Tab>"] = prev,
-        ["<C-p>"] = prev,
+--        ["<C-p>"] = prev,
 
         ['<C-j>'] = cmp.mapping(function(fallback)
             if vim.fn['vsnip#available']() == 1 then
