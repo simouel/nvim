@@ -69,7 +69,7 @@ dap.configurations.python = {
 dap.adapters.php = {
     type = 'executable',
     command = 'node',
-    args = {"/home/souellet/src/vscode-php-debug.git/out/phpDebug.js"},
+    args = {"~/src/vscode-php-debug.git/out/phpDebug.js"},
 }
 
 dap.configurations.php = {
