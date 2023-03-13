@@ -28,7 +28,7 @@ require("onedarkpro").setup({
   }
 })
 
-vim.cmd("colorscheme onedarkpro")
+vim.cmd("colorscheme onedark")
 require('lualine').setup {
   --options = {
   --  theme = 'onedark-nvim',
